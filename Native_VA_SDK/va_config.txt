@@ -1,0 +1,5 @@
+# VA config
+# VA_NAME           VA_LIB_PATH
+MotionTrack         /vendor/lib/libavc_motiontrack.so
+SceneChange         /vendor/lib/libavc_tampering.so
+VA_Template         /vendor/lib/libva_template.so

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/VAHelper.iml" filepath="$PROJECT_DIR$/VAHelper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/VAHelperLib/VAHelperLib.iml" filepath="$PROJECT_DIR$/VAHelperLib/VAHelperLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/VASampleApp/VASampleApp.iml" filepath="$PROJECT_DIR$/VASampleApp/VASampleApp.iml" />
+    </modules>
+  </component>
+</project>
