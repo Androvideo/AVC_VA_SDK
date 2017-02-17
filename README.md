@@ -1,21 +1,20 @@
 # AVC Android Camera Video Analytics SDK
 
-This repository contains native C/C++ VA SDK, Java helper library, and a Motion-Track example module.
-With this SDK, you can build your own VA modules for AndroVideo camera devices.
+This repository contains native C/C++ VA SDK, Java helper library, and a Motion-Track example module. With this SDK, you can build your own VA modules for AndroVideo camera devices.
 
 
 ## Native C/C++ VA SDK
 
 The AVC native C/C++ VA SDK contains code that facilitate building video analytics modules for AndroVideo camera devices.
 
-- [Native VA SDK Template](https://github.com/Androvideo/AVC_VA_SDK/)
-- [Native VA MotionTrack Sample](https://github.com/Androvideo/AVC_VA_SDK/)
+- [Native VA SDK Template](https://github.com/Androvideo/AVC_VA_SDK/tree/master/Native_VA_SDK)
+- [Native VA MotionTrack Sample](https://github.com/Androvideo/AVC_VA_SDK/tree/master/VA_Motion_Sample)
 
 ### Getting Started
 
 
 - Download the [Android NDK package](https://developer.android.com/ndk/downloads/index.html)
-- Download the [Native VA MotionTrack Sample](https://github.com/Androvideo/AVC_VA_SDK/)
+- Download the [Native VA MotionTrack Sample](https://github.com/Androvideo/AVC_VA_SDK/tree/master/VA_Motion_Sample)
 - Setup PATH env
 
 ```sh
@@ -77,13 +76,13 @@ D/VABroker(  425 ): int32_t qipcam::VABroker::init(): module_api_version = 0x100
 
 The AVC Java help library helps you to build Android applications that can enable/disable your own VA modules and receive your own VA events for further processing.
 
-- [Java Helper Lib](https://github.com/Androvideo/AVC_VA_SDK/)
-- [Android Sample App](https://github.com/Androvideo/AVC_VA_SDK/)
+- [Java Helper Lib](https://github.com/Androvideo/AVC_VA_SDK/tree/master/VAHelper/VAHelperLib)
+- [Android Sample App](https://github.com/Androvideo/AVC_VA_SDK/tree/master/VAHelper/VASampleApp)
 
 ### Getting Started
 
 - Prepare an Android App development environment (https://developer.android.com)
-- Download the [Android Sample App](https://github.com/Androvideo/AVC_VA_SDK/)
+- Download the [Android Sample App](https://github.com/Androvideo/AVC_VA_SDK/tree/master/VAHelper/VASampleApp)
 - Build and install the App to device
 - You can see your VA module is enable via logcat log
 ```sh
@@ -95,6 +94,4 @@ I/va_motion_sample(  423 ): int32_t motiontrack_get_supported_events(void*, int3
 
 ```
 
-
 ## FAQ
-
