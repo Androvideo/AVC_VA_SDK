@@ -1,0 +1,15 @@
+language: android
+android:
+    components:
+        - tools
+        - tools #Running this twice get's the latest build tools (https://github.com/codepath/android_guides/wiki/Setting-up-Travis-CI)
+        - platform-tools
+        - android-25
+        - build-tools-25.0.0
+        - extra
+
+jdk: oraclejdk8
+
+script:
+    - cd VAHelper
+    - ./gradlew clean build
