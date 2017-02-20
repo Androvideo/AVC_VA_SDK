@@ -1,5 +1,7 @@
 # AVC Android Camera Video Analytics SDK
 
+[![Build Status](https://api.travis-ci.org/Androvideo/AVC_VA_SDK.svg?branch=master)](https://travis-ci.org/Androvideo/AVC_VA_SDK/)
+
 This repository contains native C/C++ VA SDK, Java helper library, and a Motion-Track example module. With this SDK, you can build your own VA modules for AndroVideo camera devices.
 
 
