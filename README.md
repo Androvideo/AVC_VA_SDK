@@ -9,13 +9,13 @@ This repository contains native C/C++ VA SDK, Java helper library, and a Motion-
 
 The AVC native C/C++ VA SDK contains code that facilitate building video analytics modules for AndroVideo camera devices.
 
-- [Native VA SDK Template](https://github.com/Androvideo/AVC_VA_SDK/tree/master/Native_VA_SDK)
-- [Native VA MotionTrack Sample](https://github.com/Androvideo/AVC_VA_SDK/tree/master/VA_Motion_Sample)
+- [Native VA SDK Template](https://github.com/Androvideo/AVC_VA_SDK/tree/master/Native_VA_SDK) (An Empty template for a video analytics  module)
+- [Native VA MotionTrack Sample](https://github.com/Androvideo/AVC_VA_SDK/tree/master/VA_Motion_Sample) (An example with motion-track video analytics sample code)
 
 ### Getting Started
 
 
-- Download the [Android NDK package](https://developer.android.com/ndk/downloads/index.html)
+- Download the [Android NDK package](https://developer.android.com/ndk/downloads/index.html) (Recommend to download the latest stable version - r13b)
 - Download the [Native VA MotionTrack Sample](https://github.com/Androvideo/AVC_VA_SDK/tree/master/VA_Motion_Sample)
 - Setup PATH env
 
@@ -23,7 +23,7 @@ The AVC native C/C++ VA SDK contains code that facilitate building video analyti
 $ export PATH=$PATH:YOUR_NDK_PATH
 ```
 
-- Run ndk-build command
+- Go into the working directory and Run ndk-build command
 
 ```sh
 $ ndk-build
