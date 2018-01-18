@@ -1,6 +1,7 @@
 #include <android/log.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "va_interface_v1.h"
 #include "AdvMotionTrack.h"
