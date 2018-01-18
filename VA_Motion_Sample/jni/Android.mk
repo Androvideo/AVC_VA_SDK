@@ -13,16 +13,13 @@ LOCAL_CFLAGS += $(COMMON_FLAG)
 
 LOCAL_CPPFLAGS := -DEBUG
 
-LOCAL_SHARED_LIBRARIES := libcutils
-
 LOCAL_C_INCLUDES := $(LOCAL_C_INCLUDES_COMMON)
 
 LOCAL_CFLAGS += -D_USING_LIBCXX
 LOCAL_CPPFLAGS += -nostdinc++
 LOCAL_LDFLAGS += -nodefaultlibs
-LOCAL_LDLIBS += -lm -lc -llog -ldl
+LOCAL_LDLIBS += -lm -lc -llog -ldl -lgcc
 LOCAL_SHARED_LIBRARIES += \
-   	libc++_shared \
 
 LOCAL_MODULE:= libva_motion_sample
 

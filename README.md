@@ -15,7 +15,7 @@ The AVC native C/C++ VA SDK contains code that facilitate building video analyti
 ### Getting Started
 
 
-- Download the [Android NDK package](https://developer.android.com/ndk/downloads/index.html) (Recommend to download the latest stable version - r13b)
+- Download the [Android NDK package](https://developer.android.com/ndk/downloads/index.html) (Recommend to download the latest stable version - r16b)
 - Download the [Native VA MotionTrack Sample](https://github.com/Androvideo/AVC_VA_SDK/tree/master/VA_Motion_Sample)
 - Setup PATH env
 
