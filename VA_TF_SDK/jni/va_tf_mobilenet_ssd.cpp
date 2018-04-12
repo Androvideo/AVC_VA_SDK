@@ -162,8 +162,8 @@ int32_t tf_mobilenet_ssd_process(void *handle, struct va_frame *frame)
         for (int j=0; j < frame->width; j++){
             
             Y = ldata->YDataScale[i * frame->stride0 + j];
-            U = ldata->UVDataScale[ (int)( (i/2)*(frame->stride1 / 2) + j/2 ) ];
-            V = ldata->UVDataScale[ (int)( (i/2)*(frame->stride1 / 2) + j/2 ) + 1];
+            V = ldata->UVDataScale[ (int)( (i/2)*frame->stride1 + (j/2)*2 )];
+            U = ldata->UVDataScale[ (int)( (i/2)*frame->stride1 + (j/2)*2 ) + 1];
             ldata->values[0][i][j][0] = static_cast<unsigned char>( Y + 1.402 * (V - 128) );
             ldata->values[0][i][j][1] = static_cast<unsigned char>( Y - 0.344 * (U - 128) - 0.714 * (V - 128) );
             ldata->values[0][i][j][2] = static_cast<unsigned char>( Y + 1.772 * (U - 128) );
@@ -213,7 +213,7 @@ int32_t tf_mobilenet_ssd_get_events_count(void *handle, int32_t *count)
 {
     motion_param_t* ldata = (motion_param_t*) handle;
     float* scores = static_cast<float*>(TF_TensorData(ldata->output_values[0]));
-    float threshold = 0.4;
+    float threshold = 0.35;
     for (int i = 0; i < 100; ++i)
     {
         if (*scores > threshold) (*count)++;
