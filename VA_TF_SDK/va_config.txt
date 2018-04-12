@@ -1,0 +1,6 @@
+# VA config
+# VA_NAME           VA_LIB_PATH
+# FaceRecognition     /vendor/lib/libFaceRecognition.so
+# MotionTrack         /vendor/lib/libavc_motiontrack.so
+# SceneChange         /vendor/lib/libavc_tampering.so
+TfMobilenetSSD      /vendor/lib/libva_tf_mobilenet_ssd.so
