@@ -6,14 +6,16 @@ This example illustrate how to put google object detection model on device
 
 * Download Tensorflow object detection model ssd_mobilenet_v1_coco
     ```
-    ~$ wget http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_coco_2017_11_17.tar.gz
-    ~$ tar zxvf ssd_mobilenet_v1_coco_2017_11_17.tar.gz
-    ~$ mv ssd_mobilenet_v1_coco_2017_11_17/frozen_inference_graph.pb ~/AVC_VA_SDK/VA_TF_SDK/libs
+    ~$ cd AVC_VA_SDK/VA_TF_SDK
+    ~/AVC_VA_SDK/VA_TF_SDK$ wget http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_coco_2017_11_17.tar.gz
+    ~/AVC_VA_SDK/VA_TF_SDK$ tar zxvf ssd_mobilenet_v1_coco_2017_11_17.tar.gz
+    ~/AVC_VA_SDK/VA_TF_SDK$ mkdir libs
+    ~/AVC_VA_SDK/VA_TF_SDK$ mv ssd_mobilenet_v1_coco_2017_11_17/frozen_inference_graph.pb libs
     ```
 * Follow the [tf_libary_build.md](tf_libary_build.md) to generate ```libtensorflow.so``` for object detection model
 * Move ```libtensorflow.so``` to ```libs```
     ```bash
-    ~/AVC_VA_SDK$ cd VA_TF_SDK
+    ~/AVC_VA_SDK/VA_TF_SDK$ export PATH=$PATH:YOUR_NDK_PATH
     ~/AVC_VA_SDK/VA_TF_SDK$ mv libtensorflow.so libs
     ~/AVC_VA_SDK/VA_TF_SDK$ cd jni
     ~/AVC_VA_SDK/VA_TF_SDK/jni$ ndk-build
@@ -33,7 +35,7 @@ This example illustrate how to put google object detection model on device
     ```bash
     ~/AVC_VA_SDK/VA_TF_SDK$ adb push va_config.txt /data/misc/media/va_config.txt
     ~/AVC_VA_SDK/VA_TF_SDK$ adb shell setprop persist.va.config /data/misc/media/va_config.txt
-     ~/AVC_VA_SDK/VA_TF_SDK$ adb reboot
+    ~/AVC_VA_SDK/VA_TF_SDK$ adb reboot
     ```
 * Remember to enable object detection modules with Java VA helper library
     form  AVC_VA_SDK/VAHelper/VASampleApp/src/main/java/com/androvideo/vasampleapp/VAEventReceiver.java
@@ -44,5 +46,10 @@ This example illustrate how to put google object detection model on device
     to
     ```java
     private static final String MY_VA_MODULE_NAME = "TfMobilenetSSD";
+    ```
+    and reboot device after install apk
+    ```bash
+    ~$ adb connect 192.168.0.10
+    ~$ adb reboot
     ```
 ## Now you can check object detection result on your camera screen
