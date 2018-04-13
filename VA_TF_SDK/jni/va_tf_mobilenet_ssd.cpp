@@ -5,14 +5,19 @@
 #include <assert.h>
 #include <time.h>
 #include <vector>
+#include <map>
+#include <sstream>
 
 #include <include/tensorflow/c/c_api.h>
 
 #include "va_interface_v1.h"
+#include "items_table.h"
 
 #define LOG_TAG   "va_tf_mobilenet_ssd"
 #define ALOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
 #define ALOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
+
+std::map<int, std::string> items;
 
 typedef struct {
     TF_Status          *status;
@@ -58,7 +63,7 @@ void free_buffer(void* data, size_t length) {
 }
 
 static void Deallocator(void* data, size_t length, void* arg) {
-        //free(data);
+        // free(data);
         // *reinterpret_cast<bool*>(arg) = true;
 }
 
@@ -121,7 +126,7 @@ int32_t tf_mobilenet_ssd_init(void **handle)
 
     local_data->output_scores = TF_AllocateTensor(TF_FLOAT, local_data->out_scores_dims, 2, local_data->num_bytes_scores);
     local_data->output_boxes = TF_AllocateTensor(TF_FLOAT, local_data->out_boxes_dims, 3, local_data->num_bytes_boxes);
-    local_data->output_classes = TF_AllocateTensor(TF_INT32, local_data->out_classes_dims, 2, local_data->num_bytes_classes);
+    local_data->output_classes = TF_AllocateTensor(TF_FLOAT, local_data->out_classes_dims, 2, local_data->num_bytes_classes);
     local_data->output_values.push_back(local_data->output_scores);
     local_data->output_values.push_back(local_data->output_boxes);
     local_data->output_values.push_back(local_data->output_classes);
@@ -226,6 +231,8 @@ int32_t tf_mobilenet_ssd_get_events(void *handle, va_event *events, int32_t num_
 {
     motion_param_t* ldata = (motion_param_t*) handle;
     float* boxes = static_cast<float*>(TF_TensorData(ldata->output_values[1]));
+    float* classes = static_cast<float*>(TF_TensorData(ldata->output_values[2]));
+    int person = 0;
     meta_data meta;
     meta.frame_width        = ldata->frame_width;
     meta.frame_height       = ldata->frame_height;
@@ -235,17 +242,23 @@ int32_t tf_mobilenet_ssd_get_events(void *handle, va_event *events, int32_t num_
 
     for (int i = 0; i < num_events; i++){
         events[i].event_type = VA_EVENT_USER_0;
-        sprintf(events[i].event_name, "TF_MOBILENET_SSD_object_%d", i);
+        std::stringstream ss;
+        std::string no;
+        ss << i;
+        ss >> no;
+        sprintf(events[i].event_name, "%s", (items[*classes] + "_" + no).c_str());
 	events[i].event_box.start_x = static_cast<int> (*(boxes + 1) * 1920);
 	events[i].event_box.start_y = static_cast<int> (*(boxes + 0) * 1080);
 	events[i].event_box.width = static_cast<int> ((*(boxes + 3) - *(boxes + 1)) * 1920);
 	events[i].event_box.height = static_cast<int> ((*(boxes + 2) - *(boxes + 0)) * 1080);
         events[i].event_data.data_size = sizeof(meta_data);
         memcpy(&(events[i].event_data.data[0]), (uint8_t*)&meta, sizeof(meta_data));
+        if (*classes == 1) person++;
+        classes++;
         boxes += 4;
     }
     
-
+    ALOGI("----------There are %d persons on the screen!----------", person);
     
     return 0;
 }
