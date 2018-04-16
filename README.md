@@ -11,6 +11,7 @@ The AVC native C/C++ VA SDK contains code that facilitate building video analyti
 
 - [Native VA SDK Template](https://github.com/Androvideo/AVC_VA_SDK/tree/master/Native_VA_SDK) (An Empty template for a video analytics  module)
 - [Native VA MotionTrack Sample](https://github.com/Androvideo/AVC_VA_SDK/tree/master/VA_Motion_Sample) (An example with motion-track video analytics sample code)
+- [Native VA Tensorflow Object Detection Sample](https://github.com/Androvideo/AVC_VA_SDK/tree/master/VA_TF_SDK) (An example with Google tensorflow model ssd_mobilenet_v1_coco)
 
 ### Getting Started
 
